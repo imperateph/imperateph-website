@@ -14,7 +14,7 @@ export default function Home() {
         <Image
           src={image}
           alt="Showcase"
-          className="max-h-[500px] w-full object-cover xl:hidden"
+          className="max-h-[500px] min-h-[450px] w-full object-cover xl:hidden"
         />
         <div className="mx-auto flex flex-col xl:flex-row bg-white rounded-lg p-6 xl:mb-auto xl:mr-8 gap-6">
           <Box className="text-center xl:text-left xl:w-[400px]">
