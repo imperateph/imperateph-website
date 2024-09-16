@@ -16,7 +16,7 @@ export default function Home() {
           alt="Showcase"
           className="max-h-[500px] w-full object-cover xl:hidden"
         />
-        <div className="mx-auto flex flex-col xl:flex-row bg-white rounded-lg p-4 xl:mb-auto xl:mr-4 gap-6">
+        <div className="mx-auto flex flex-col xl:flex-row bg-white rounded-lg p-6 xl:mb-auto xl:mr-8 gap-6">
           <Box className="text-center xl:text-left xl:w-[400px]">
             <div className="mb-4">
               <h1 className="text-4xl font-semibold">Your Future Matters,</h1>
@@ -32,7 +32,7 @@ export default function Home() {
             </p>
           </Box>
           <Box className="mx-auto max-w-[500px]">
-            <p className="mb-2 font-bold">
+            <p className="mb-4 font-bold text-xl">
               Be the first to be updated with our property listings!
             </p>
             <TeaserForm />

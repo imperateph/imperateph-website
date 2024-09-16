@@ -8,10 +8,10 @@ import {
   Input,
   Textarea,
   useBreakpoint,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
-import _ from "lodash";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 
 export default function TeaserForm() {
@@ -25,7 +25,12 @@ export default function TeaserForm() {
   const toast = useToast();
   const breakpoint = useBreakpoint();
 
+  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [submitState, setSubmitState] = useState<"idle" | "pending">("idle");
+
+  const recaptchaOnChange = (value: string | null) => {
+    setRecaptchaValue(value);
+  };
 
   const onSubmit = async (data: {
     name: string;
@@ -34,12 +39,26 @@ export default function TeaserForm() {
     message: string;
   }) => {
     setSubmitState("pending");
+    if (!recaptchaValue) {
+      toast({
+        title: "Error Recaptcha",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: breakpoint === "base" ? "bottom" : "bottom-right",
+      });
+      setSubmitState("idle");
+      return;
+    }
+
+    const newData = { ...data, recaptcha: recaptchaValue };
+
     const response = await fetch("/api/teaser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(newData),
     });
 
     if (response.status === 400) {
@@ -51,6 +70,7 @@ export default function TeaserForm() {
         isClosable: true,
         position: breakpoint === "base" ? "bottom" : "bottom-right",
       });
+      setSubmitState("idle");
       return;
     }
 
@@ -63,6 +83,7 @@ export default function TeaserForm() {
         isClosable: true,
         position: breakpoint === "base" ? "bottom" : "bottom-right",
       });
+      setSubmitState("idle");
       return;
     }
 
@@ -76,12 +97,21 @@ export default function TeaserForm() {
         position: breakpoint === "base" ? "top" : "bottom-right",
       });
       reset();
+      grecaptcha.reset();
     }
     setSubmitState("idle");
   };
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = `https://www.google.com/recaptcha/api.js`;
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
+
   return (
-    <form onSubmit={handleSubmit(_.debounce(onSubmit, 2000))} className="w-full">
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <Box className="flex flex-col gap-2">
         <div className="flex flex-col xl:flex-row gap-2">
           <FormControl isRequired>
@@ -118,6 +148,17 @@ export default function TeaserForm() {
             {...register("message", { required: true, maxLength: 500 })}
           />
         </FormControl>
+        {/* <div
+          className="g-recaptcha"
+          data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY}
+          data-callback="onSubmit"
+          data-size="invisible"
+        ></div> */}
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY!}
+          onChange={recaptchaOnChange}
+          // size="invisible"
+        />
         <Button type="submit" colorScheme="yellow">
           {submitState === "pending" ? "Sending..." : "Send"}
         </Button>

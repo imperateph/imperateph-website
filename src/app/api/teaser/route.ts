@@ -4,6 +4,23 @@ import nodemailer from "nodemailer";
 export async function POST(req: NextRequest) {
   const body = await req.json();
 
+  const recaptcha = body.recaptcha;
+
+  if (!recaptcha) {
+    return new Response("Recaptcha is required", { status: 400 });
+  }
+
+  const recaptchaRes = await fetch(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRETKEY}&response=${recaptcha}`,
+    { method: "POST" }
+  );
+
+  const recaptchaData = await recaptchaRes.json();
+
+  if (!recaptchaData.success) {
+    return new Response("Recaptcha failed", { status: 400 });
+  }
+
   //use regex to validate email
   const email = body.email;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,11 +56,11 @@ export async function POST(req: NextRequest) {
 
   const emailSent = await sendEmail(subject, emailMessage);
 
-    if (emailSent) {
-        return new Response("Email sent", { status: 200 });
-    } else {
-        return new Response("Error sending email", { status: 500 });
-    }
+  if (emailSent) {
+    return new Response("Email sent", { status: 200 });
+  } else {
+    return new Response("Error sending email", { status: 500 });
+  }
 }
 
 const transporter = nodemailer.createTransport({
