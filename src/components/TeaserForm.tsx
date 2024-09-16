@@ -62,9 +62,10 @@ export default function TeaserForm() {
     });
 
     if (response.status === 400) {
+      const errorMessage = await response.text();
       toast({
         title: "Error",
-        description: "Invalid email",
+        description: errorMessage,
         status: "error",
         duration: 9000,
         isClosable: true,
