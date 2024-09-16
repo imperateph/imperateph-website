@@ -145,7 +145,6 @@ export default function TeaserForm() {
           <FormLabel>Message</FormLabel>
           <Textarea
             placeholder="Inquire current listings."
-            minHeight={150}
             {...register("message", { required: true, maxLength: 500 })}
           />
         </FormControl>
