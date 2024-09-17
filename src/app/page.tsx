@@ -3,9 +3,46 @@ import TeaserForm from "../components/TeaserForm";
 import BoxMaxWidth from "@/components/containers/BoxMaxWidth";
 import image from "/public/sample-image.jpeg";
 import Image from "next/image";
+import { Metadata } from "next";
 
 // Your Future Matters, Invest with Imperate
 // We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.
+
+export const metadata : Metadata = {
+  title: {
+    absolute: "Imperate Realty",
+    template: "%s | Imperate Realty",
+  },
+  keywords: [
+    "real estate",
+    "luxury",
+    "property",
+    "investment",
+    "philippines",
+    "manila",
+    "condo",
+    "davao",
+    "luxury homes",
+    "luxury condos",
+  ],
+  description:
+    "We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.",
+    openGraph: {
+      title: "Imperate Realty",
+      description:
+        "We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.",
+      type: "website",
+      locale: "en_PH",
+      images: [
+        {
+          url: "/sample-image.jpeg",
+          width: 800,
+          height: 600,
+          alt: "Imperate Realty",
+        },
+      ],
+    },
+};
 
 export default function Home() {
   return (
