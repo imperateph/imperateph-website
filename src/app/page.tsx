@@ -56,8 +56,8 @@ export default function Home() {
         <div className="mx-auto flex flex-col xl:flex-row bg-white rounded-lg p-6 xl:mb-auto xl:mr-8 gap-6">
           <Box className="text-center xl:text-left xl:w-[400px]">
             <div className="mb-4">
-              <h1 className="text-4xl font-semibold">Your Future Matters,</h1>
-              <h1 className="text-4xl font-semibold">
+              <h1 className="text-6xl font-extrabold">Your Future Matters,</h1>
+              <h1 className="text-6xl font-extrabold">
                 Invest with <span className=" text-blue-800">Imperate</span>
               </h1>
             </div>
