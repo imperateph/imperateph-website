@@ -3,7 +3,6 @@ import "./globals.css";
 import { Providers } from "../providers/Providers";
 import { font } from "../fonts/fonts";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 // Your Future Matters, Invest with Imperate
 export const metadata: Metadata = {
   title: {
@@ -39,7 +38,6 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen" style={{height: "100%"}}>
             <Navbar />
             {children}
-            <Footer className="mt-auto py-2" />
           </div>
         </Providers>
       </body>
