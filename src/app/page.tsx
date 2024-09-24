@@ -1,14 +1,14 @@
 import { Box } from "@chakra-ui/react";
 import TeaserForm from "../components/TeaserForm";
 import BoxMaxWidth from "@/components/containers/BoxMaxWidth";
-import image from "/public/sample-image.jpeg";
+import image from "/public/bgimage.png";
 import Image from "next/image";
 import { Metadata } from "next";
 
 // Your Future Matters, Invest with Imperate
 // We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.
 
-export const metadata : Metadata = {
+export const metadata: Metadata = {
   title: {
     absolute: "Imperate Realty",
     template: "%s | Imperate Realty",
@@ -27,26 +27,26 @@ export const metadata : Metadata = {
   ],
   description:
     "We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.",
-    openGraph: {
-      title: "Imperate Realty",
-      description:
-        "We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.",
-      type: "website",
-      locale: "en_PH",
-      images: [
-        {
-          url: "/sample-image.jpeg",
-          width: 800,
-          height: 600,
-          alt: "Imperate Realty",
-        },
-      ],
-    },
+  openGraph: {
+    title: "Imperate Realty",
+    description:
+      "We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.",
+    type: "website",
+    locale: "en_PH",
+    images: [
+      {
+        url: "/bgimage.png",
+        width: 800,
+        height: 600,
+        alt: "Imperate Realty",
+      },
+    ],
+  },
 };
 
 export default function Home() {
   return (
-    <main className="xl:bg-[url('/sample-image.jpeg')] bg-cover xl:h-full flex items-center">
+    <main className="xl:bg-[url('/bgimage.png')] bg-cover xl:h-full flex items-center">
       <BoxMaxWidth className="mr-0">
         <Image
           src={image}
