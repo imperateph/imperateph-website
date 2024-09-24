@@ -4,7 +4,7 @@ import logo from "/public/whitelogo.png";
 
 export default function Navbar() {
   return (
-    <nav className="border-b py-4 px-2">
+    <nav className="py-4 px-2 fixed">
       <BoxMaxWidth>
         <Image
           src={logo}
