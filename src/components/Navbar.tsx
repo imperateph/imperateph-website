@@ -1,6 +1,6 @@
 import Image from "next/image";
 import BoxMaxWidth from "./containers/BoxMaxWidth";
-import logo from "/public/icon-350x100.png";
+import logo from "/public/whitelogo.png";
 
 export default function Navbar() {
   return (
