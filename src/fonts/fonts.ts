@@ -1,11 +1,11 @@
 // app/fonts.ts
-import { Lexend } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const lexend = Lexend({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-lexend",
+  weight: "400",
 });
 
 export const font = {
-  lexend,
+  poppins,
 };

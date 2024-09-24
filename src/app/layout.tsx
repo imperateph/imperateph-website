@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${font.lexend.variable} antialiased`} style={{height: "100%"}}>
+    <html lang="en" className={`${font.poppins} antialiased`} style={{height: "100%"}}>
       <body style={{height: "100%"}}>
         <Providers>
           <div className="flex flex-col min-h-screen" style={{height: "100%"}}>
