@@ -39,7 +39,7 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen" style={{height: "100%"}}>
             <Navbar />
             {children}
-            <Footer className="mt-auto py-2" />
+            {/* <Footer className="mt-auto py-2" /> */}
           </div>
         </Providers>
       </body>
