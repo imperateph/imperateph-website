@@ -47,6 +47,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="xl:bg-[url('/bgimage.png')] bg-cover xl:h-full flex items-center text-white">
+      <div className="absolute bottom-0 left-0 w-full h-full bg-vertical-custom-gradient"></div>
+
       <BoxMaxWidth className="mr-0">
         <Image
           src={image}
