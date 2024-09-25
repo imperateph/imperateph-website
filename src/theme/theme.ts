@@ -4,8 +4,8 @@ import { extendTheme } from "@chakra-ui/react";
 // 2. Call `extendTheme` and pass your custom values
 const theme = extendTheme({
   fonts: {
-    heading: `var(--font-lexend), sans-serif`,
-    body: `var(--font-lexend), sans-serif`,
+    heading: `var(--font-poppins), sans-serif`,
+    body: `var(--font-poppins), sans-serif`,
   },
 });
 
