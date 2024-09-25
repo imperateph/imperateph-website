@@ -61,7 +61,7 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <p className="mb-4 text-center xl:text-left">
+            <p className="mb-8 text-center xl:text-left">
               Be the first to be updated with our property listings!
             </p>
             <TeaserForm />

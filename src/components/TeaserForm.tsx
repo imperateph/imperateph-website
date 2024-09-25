@@ -123,7 +123,7 @@ export default function TeaserForm() {
             {...register("name", { required: true, maxLength: 30 })}
           />
         </FormControl>
-        <div className="flex flex-col xl:flex-row gap-2">
+        <div className="flex flex-col xl:flex-row gap-6">
           <FormControl>
             <FormLabel>Email address</FormLabel>
             <Input
