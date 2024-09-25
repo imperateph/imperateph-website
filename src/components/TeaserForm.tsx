@@ -163,7 +163,7 @@ export default function TeaserForm() {
           size="invisible"
           className=" hidden"
         />
-        <Button type="submit" className="rounded-full bg-[#ddac00] text-white">
+        <Button type="submit" className="rounded-full bg-[#ddac00] text-white w-full xl:w-fit ml-auto">
           {submitState === "pending" ? "Sending..." : "Send Message"}
         </Button>
       </Box>
