@@ -49,7 +49,7 @@ export default function Home() {
           <div className="text-center xl:text-left">
             <p className="mb-4">
               Discover Exceptional Real Estate Tailored to Your Lifestyle and
-              Goals````
+              Goals
             </p>
             <div className="mb-4">
               <h1 className="text-6xl xl:text-7xl font-extrabold">
