@@ -6,11 +6,10 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Textarea,
   useBreakpoint,
   useToast,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 
@@ -25,12 +24,9 @@ export default function TeaserForm() {
   const toast = useToast();
   const breakpoint = useBreakpoint();
 
-  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
+  // const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const [submitState, setSubmitState] = useState<"idle" | "pending">("idle");
-
-  const recaptchaOnChange = (value: string | null) => {
-    setRecaptchaValue(value);
-  };
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const onSubmit = async (data: {
     name: string;
@@ -39,6 +35,9 @@ export default function TeaserForm() {
     message: string;
   }) => {
     setSubmitState("pending");
+    const recaptchaValue = recaptchaRef.current
+      ? await recaptchaRef.current.executeAsync()
+      : null;
     if (!recaptchaValue) {
       toast({
         title: "Error Recaptcha",
@@ -112,55 +111,60 @@ export default function TeaserForm() {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-      <Box className="flex flex-col gap-2">
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-xl mx-auto">
+      <Box className="flex flex-col gap-6">
+        <FormControl>
+          <FormLabel>Name</FormLabel>
+          <Input
+            variant={"flushed"}
+            type="string"
+            // placeholder="Name"
+            required
+            {...register("name", { required: true, maxLength: 30 })}
+          />
+        </FormControl>
         <div className="flex flex-col xl:flex-row gap-2">
-          <FormControl isRequired>
-            <FormLabel>Name</FormLabel>
-            <Input
-              type="string"
-              placeholder="Name"
-              {...register("name", { required: true, maxLength: 30 })}
-            />
-          </FormControl>
-          <FormControl isRequired>
+          <FormControl>
             <FormLabel>Email address</FormLabel>
             <Input
               type="email"
-              placeholder="Email"
+              variant={"flushed"}
+              // placeholder="Email"
+              required
               {...register("email", { required: true })}
             />
             {/* <FormHelperText>Please enter an active email.</FormHelperText> */}
           </FormControl>
+
+          <FormControl>
+            <FormLabel>Phone</FormLabel>
+            <Input
+              variant={"flushed"}
+              type="tel"
+              // placeholder="09xx-xxx-xxxx"
+              required
+              {...register("phone", { required: true })}
+            />
+          </FormControl>
         </div>
-        <FormControl isRequired>
-          <FormLabel>Phone</FormLabel>
-          <Input
-            type="tel"
-            placeholder="09xx-xxx-xxxx"
-            {...register("phone", { required: true })}
-          />
-        </FormControl>
         <FormControl>
           <FormLabel>Message</FormLabel>
-          <Textarea
-            placeholder="Inquire current listings."
+          <Input
+            variant={"flushed"}
+            className=" placeholder-white"
+            placeholder="Write your message..."
+            resize={"none"}
             {...register("message", { required: true, maxLength: 500 })}
           />
         </FormControl>
-        {/* <div
-          className="g-recaptcha"
-          data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY}
-          data-callback="onSubmit"
-          data-size="invisible"
-        ></div> */}
         <ReCAPTCHA
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY!}
-          onChange={recaptchaOnChange}
-          // size="invisible"
+          ref={recaptchaRef}
+          size="invisible"
+          className=" hidden"
         />
-        <Button type="submit" colorScheme="yellow">
-          {submitState === "pending" ? "Sending..." : "Send"}
+        <Button type="submit" className="rounded-full bg-[#ddac00] text-white">
+          {submitState === "pending" ? "Sending..." : "Send Message"}
         </Button>
       </Box>
     </form>

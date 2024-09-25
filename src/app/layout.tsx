@@ -6,8 +6,8 @@ import Navbar from "../components/Navbar";
 // Your Future Matters, Invest with Imperate
 export const metadata: Metadata = {
   title: {
-    absolute: "Imperate Realty",
-    template: "%s | Imperate Realty",
+    absolute: "Imperate",
+    template: "%s | Imperate",
   },
   keywords: [
     "real estate",

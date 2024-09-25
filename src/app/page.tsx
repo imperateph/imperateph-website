@@ -1,17 +1,14 @@
-import { Box } from "@chakra-ui/react";
-import TeaserForm from "../components/TeaserForm";
 import BoxMaxWidth from "@/components/containers/BoxMaxWidth";
-import image from "/public/bgimage.png";
-import Image from "next/image";
 import { Metadata } from "next";
+import TeaserForm from "../components/TeaserForm";
 
 // Your Future Matters, Invest with Imperate
 // We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Imperate Realty",
-    template: "%s | Imperate Realty",
+    absolute: "Imperate",
+    template: "%s | Imperate",
   },
   keywords: [
     "real estate",
@@ -28,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.",
   openGraph: {
-    title: "Imperate Realty",
+    title: "Imperate",
     description:
       "We showcase the finest upscale and luxury properties across the Philippines. Our curated selection offers a gateway to discover exceptional living spaces tailored to your lifestyle and investment goals.",
     type: "website",
@@ -38,7 +35,7 @@ export const metadata: Metadata = {
         url: "/bgimage.png",
         width: 800,
         height: 600,
-        alt: "Imperate Realty",
+        alt: "Imperate",
       },
     ],
   },
@@ -46,34 +43,29 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="xl:bg-[url('/bgimage.png')] bg-cover xl:h-full flex items-center text-white">
-      <div className="absolute bottom-0 left-0 w-full h-full bg-vertical-custom-gradient"></div>
-
-      <BoxMaxWidth className="mr-0">
-        <Image
-          src={image}
-          alt="Showcase"
-          className="max-h-[500px] min-h-[450px] w-full object-cover xl:hidden"
-        />
-        <div className="mx-auto flex flex-col xl:flex-row bg-transparent rounded-lg p-6 xl:mb-auto xl:mr-8 gap-6">
-          <Box className="text-center xl:text-left xl:w-[400px]">
-            <p>
+    <main className="bg-[linear-gradient(to_top,rgba(49,49,145,1)10%,rgba(218,218,218,0.001)),url('/bgimage.png')] bg-cover bg-right xl:bg-top text-white pt-[200px] xl:pt-[420px] pb-12 min-h-screen">
+      <BoxMaxWidth>
+        <div className="flex flex-col xl:flex-row justify-around gap-8 p-2">
+          <div className="text-center xl:text-left">
+            <p className="mb-4">
               Discover Exceptional Real Estate Tailored to Your Lifestyle and
               Goals
             </p>
             <div className="mb-4">
-              <h1 className="text-6xl font-extrabold">Your Future Matters,</h1>
-              <h1 className="text-6xl font-extrabold">
+              <h1 className="text-6xl xl:text-7xl font-extrabold">
+                Your Future Matters,
+              </h1>
+              <h1 className="text-6xl xl:text-7xl font-extrabold">
                 Invest with <span>Imperate</span>
               </h1>
             </div>
-          </Box>
-          <Box className="mx-auto max-w-[500px]">
-            <p className="mb-4 font-bold text-xl">
+          </div>
+          <div>
+            <p className="mb-4 text-center xl:text-left">
               Be the first to be updated with our property listings!
             </p>
             <TeaserForm />
-          </Box>
+          </div>
         </div>
       </BoxMaxWidth>
     </main>
