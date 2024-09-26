@@ -1,4 +1,4 @@
-import BoxMaxWidth from "@/components/containers/BoxMaxWidth";
+import { Box } from "@chakra-ui/react";
 import { Metadata } from "next";
 import TeaserForm from "../components/TeaserForm";
 
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="bg-[linear-gradient(to_top,rgba(49,49,145,1)10%,rgba(218,218,218,0.001)),url('/bgimage.png')] bg-cover bg-right xl:bg-top text-white pt-[200px] xl:pt-[420px] pb-12 min-h-screen">
-      <BoxMaxWidth>
-        <div className="flex flex-col xl:flex-row justify-around gap-8 p-2">
+      <Box className="max-w-[1700px] mx-auto lg:px-6">
+        <div className="flex flex-col xl:flex-row justify-between gap-8 p-2">
           <div className="text-center xl:text-left">
             <p className="mb-4">
               Discover Exceptional Real Estate Tailored to Your Lifestyle and
@@ -67,7 +67,7 @@ export default function Home() {
             <TeaserForm />
           </div>
         </div>
-      </BoxMaxWidth>
+      </Box>
     </main>
   );
 }
