@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "../providers/Providers";
 import { font } from "../fonts/fonts";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 // Your Future Matters, Invest with Imperate
 export const metadata: Metadata = {
   title: {

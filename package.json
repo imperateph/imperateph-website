@@ -20,6 +20,7 @@
     "framer-motion": "^11.5.4",
     "grecaptcha": "^1.0.3",
     "lodash": "^4.17.21",
+    "lucide-react": "^0.453.0",
     "next": "14.2.11",
     "nodemailer": "^6.9.15",
     "react": "^18",

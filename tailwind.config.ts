@@ -11,10 +11,12 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#2e3191",
+        primaryDark: "#0e0f2b",
+        accent: "#ddac00",
+        backgroundOne: "#e4e5ff",
+        backgroundTwo: "#c0c0dd",
       },
-      backgroundImage: {
-        'vertical-custom-gradient': 'linear-gradient(180deg, rgba(255,255,255,0) 38%, rgba(46,49,145,1) 85%)',
-      }
     },
   },
   plugins: [],
